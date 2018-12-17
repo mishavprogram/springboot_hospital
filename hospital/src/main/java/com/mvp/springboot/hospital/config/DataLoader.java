@@ -32,20 +32,37 @@ public class DataLoader {
     }
 
     private void init(){
-        Doctor doctor1 = Doctor.builder().name("MishaDoc").speciality("killer").build();
+        Doctor doctor1 = Doctor.builder()
+            .name("MishaDoc")
+            .speciality("killer")
+            .build();
 
-        Doctor doctor2 = new Doctor();
-        doctor2.setName("VitalikDoc");
-        doctor2.setSpeciality("vitalik");
+        Doctor doctor2 = Doctor.builder()
+            .name("VitalikDoc")
+            .speciality("vitalik")
+            .build();
 
-        Patient patient1 = new Patient();
-        patient1.setName("Jackyyy");
+        Patient patient1 = Patient.builder()
+            .name("Jackyyy")
+            .build();
 
-        Reception reception1 = new Reception();
-        reception1.setDoctor(doctor1);
-        reception1.setPatient(patient1);
+        Reception reception1 = Reception.builder()
+            .doctor(doctor1)
+            .patient(patient1)
+            .year(2018)
+            .month(10)
+            .day(5)
+            .hour(15)
+            .build();
 
-        Reception reception2 = new Reception();
+        Reception reception2 = Reception.builder()
+            .doctor(doctor2)
+            .patient(patient1)
+            .year(2018)
+            .month(10)
+            .day(5)
+            .hour(10)
+            .build();
         reception2.setDoctor(doctor2);
         reception2.setPatient(patient1);
 

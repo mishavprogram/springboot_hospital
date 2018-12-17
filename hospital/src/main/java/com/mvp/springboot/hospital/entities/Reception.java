@@ -1,32 +1,50 @@
 package com.mvp.springboot.hospital.entities;
 
-import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-//@Table(name = "candidate")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"year" , "month", "day", "hour", "doctor_id"})})
 public class Reception {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name="DOCTOR_ID", unique = true)
+    @ManyToOne
     private Doctor doctor;
 
-    @OneToOne()
+    @ManyToOne
     private Patient patient;
 
-    /*private Date date;*/
+    @Column(nullable = false)
+    private int year;
+
+    @Column(nullable = false)
+    private int month;
+
+    @Column(nullable = false)
+    private int day;
+
+    @Column(nullable = false)
+    private int hour;
 
 }
