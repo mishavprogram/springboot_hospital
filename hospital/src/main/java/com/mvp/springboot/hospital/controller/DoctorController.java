@@ -5,8 +5,10 @@ import com.mvp.springboot.hospital.service.DoctorService;
 import com.mvp.springboot.hospital.service.converter.DoctorConverter;
 import com.mvp.springboot.hospital.service.dto.DoctorDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +29,13 @@ public class DoctorController {
     public List<DoctorDto> getDoctor(){
         List<Doctor> doctors = doctorService.findAll();
         return doctorConverter.toDto(doctors);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DoctorDto> getForm(@PathVariable
+                                               long id) {
+        DoctorDto doctorDto = doctorService.findById(id);
+        return ResponseEntity.ok(doctorDto);
     }
 
 }

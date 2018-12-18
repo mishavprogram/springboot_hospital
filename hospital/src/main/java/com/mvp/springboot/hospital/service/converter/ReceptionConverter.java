@@ -22,7 +22,7 @@ public class ReceptionConverter implements Converter<ReceptionDto, Reception> {
             .doctor(dto.getDoctor())
             .patient(dto.getPatient())
             .year(dto.getLocalDate().getYear())
-            .month(dto.getLocalDate().getDayOfMonth())
+            .month(dto.getLocalDate().getMonth().getValue())
             .day(dto.getLocalDate().getDayOfMonth())
             .hour(dto.getLocalDate().getHour())//чи треба %24?
             .build();

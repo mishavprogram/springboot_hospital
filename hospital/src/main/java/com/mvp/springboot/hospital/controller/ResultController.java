@@ -5,8 +5,10 @@ import com.mvp.springboot.hospital.service.ResultService;
 import com.mvp.springboot.hospital.service.converter.ResultConverter;
 import com.mvp.springboot.hospital.service.dto.ResultDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +38,12 @@ public class ResultController {
         Result result = resultConverter.toEntity(resultDto);
         result = resultService.create(result);
         return resultConverter.toDto(result);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResultDto> getForm(@PathVariable
+                                                 long id) {
+        ResultDto resultDto = resultService.findById(id);
+        return ResponseEntity.ok(resultDto);
     }
 }
