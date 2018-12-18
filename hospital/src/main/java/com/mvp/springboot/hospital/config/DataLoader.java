@@ -50,8 +50,8 @@ public class DataLoader {
             .doctor(doctor1)
             .patient(patient1)
             .year(2018)
-            .month(10)
-            .day(5)
+            .month(12)
+            .day(18)
             .hour(15)
             .build();
 
@@ -59,8 +59,8 @@ public class DataLoader {
             .doctor(doctor2)
             .patient(patient1)
             .year(2018)
-            .month(10)
-            .day(5)
+            .month(12)
+            .day(18)
             .hour(10)
             .build();
         reception2.setDoctor(doctor2);

@@ -1,0 +1,36 @@
+.customTable {
+	text-align: center;
+	font-size: 24px;
+}
+
+.customTable th {
+	background-color: green;
+	padding: 20px;
+}
+
+.customTable td {
+	background-color: lightgreen;
+	padding: 20px;
+}
+
+.customTable tr:hover {
+	filter: brightness(1.2);
+}
+
+.customTable tr:first-child:hover {
+	filter: brightness(1.0);
+}
+
+.busy td {
+	background-color: crimson;
+}
+
+.pats {
+	display: flex;
+	justify-content: space-between;
+	width: 700px;
+}
+
+.addPat {
+	margin-top: 50px;
+}
