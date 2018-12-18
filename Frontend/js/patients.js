@@ -23,7 +23,7 @@ window.onload = function() {
       		})
     		.then(() => alert('Success!'))
     		.catch(() => alert('Failed!'));
-    		document.location.href = "patients.html";
+    		//document.location.href = "patients.html";
 		} else {
 			alert("Please, enter patient name");
 		}

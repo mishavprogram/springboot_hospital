@@ -122,7 +122,7 @@ async function fillReseption(event) {
         body: JSON.stringify(reseption)
     })
     .then(() => alert('Success!'))
-    document.location.href = "patients.html";
+    // document.location.href = "patients.html";
 }
 
 function filterPeopleById(arr, id) {
