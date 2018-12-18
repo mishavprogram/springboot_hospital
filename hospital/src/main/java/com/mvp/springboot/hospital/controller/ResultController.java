@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class ResultController {
     }
 
     @PostMapping
-    public ResultDto create(ResultDto resultDto){
+    public ResultDto create(@RequestBody ResultDto resultDto){
         Result result = resultConverter.toEntity(resultDto);
         result = resultService.create(result);
         return resultConverter.toDto(result);
