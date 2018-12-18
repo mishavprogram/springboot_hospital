@@ -5,8 +5,10 @@ import com.mvp.springboot.hospital.service.PatientService;
 import com.mvp.springboot.hospital.service.converter.PatientConverter;
 import com.mvp.springboot.hospital.service.dto.PatientDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +38,13 @@ public class PatientController {
         Patient patient = patientConverter.toEntity(patientDto);
         patient = patientService.create(patient);
         return patientConverter.toDto(patient);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PatientDto> getForm(@PathVariable
+                                                 long id) {
+        PatientDto patientDto = patientService.findById(id);
+        return ResponseEntity.ok(patientDto);
     }
 
 }
