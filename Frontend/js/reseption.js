@@ -1,12 +1,19 @@
 var baseURL = "http://localhost:8081/api/receptions";
 var doctorsURL = "http://localhost:8081/api/doctors";
 var patientsURL = "http://localhost:8081/api/patients";
+var returnBtn;
 
 window.onload = function() {
 	var title2 = document.getElementById('title2');
 	title2.innerHTML = "Reseption time of doctor " + sessionStorage.getItem("docName") + " for today";
     var title = document.getElementById('title');
     title.innerHTML += sessionStorage.getItem("patName");
+
+    returnBtn = document.getElementById("returnBtn");
+    returnBtn.addEventListener("click", function() {
+    console.log("kek")
+    document.location.href = "patients.html";
+    })
 
 	fetch(baseURL)
 	.then(d => d.json())
@@ -92,7 +99,11 @@ async function fillReseption(event) {
         i++;
     }
 
-    date.setHours(+trueHours);
+    var timeZone = 2;
+
+    console.log(+trueHours)
+
+    date.setHours(+trueHours + timeZone);
     date.setMinutes(0);
     date.setSeconds(0);
     // console.log(date);
@@ -111,8 +122,7 @@ async function fillReseption(event) {
         body: JSON.stringify(reseption)
     })
     .then(() => alert('Success!'))
-    .catch(() => alert('Failed!'));
-            // document.location.href = "patients.html";
+    document.location.href = "patients.html";
 }
 
 function filterPeopleById(arr, id) {

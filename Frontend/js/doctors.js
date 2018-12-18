@@ -1,5 +1,5 @@
 const baseURL = 'http://localhost:8081/api'
-
+var returnBtn;
 
 // чорнові функції
 function postUser() {
@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', main)
 function  main() {
   var title = document.getElementById("title");
   title.innerHTML += sessionStorage.getItem("patName");
+  returnBtn = document.getElementById("returnBtn");
+
+  
+  returnBtn.addEventListener("click", function() {
+    console.log("kek")
+    document.location.href = "patients.html";
+  })
 
   fetch(baseURL + '/doctors')
     .then(d => d.json())
@@ -63,4 +70,3 @@ function  main() {
       document.location.href = "reseptionTime.html";
     }) 
   }
-
