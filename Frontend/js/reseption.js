@@ -103,16 +103,16 @@ async function fillReseption(event) {
     console.log(reseption);
 
     fetch(baseURL, {
-                method: 'POST',
-                headers: {  
-                    'Accept': 'application/json',
-                  "Content-type": "application/json"  
-                },
-                body: JSON.stringify(reseption)
-            })
-            .then(() => alert('Success!'))
-            .catch(() => alert('Failed!'));
-            //document.location.href = "patients.html";
+        method: 'POST',
+        headers: {  
+            'Accept': 'application/json',
+          "Content-type": "application/json"  
+        },
+        body: JSON.stringify(reseption)
+    })
+    .then(() => alert('Success!'))
+    .catch(() => alert('Failed!'));
+            // document.location.href = "patients.html";
 }
 
 function filterPeopleById(arr, id) {
