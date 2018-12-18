@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -46,5 +48,8 @@ public class Reception {
 
     @Column(nullable = false)
     private int hour;
+
+    @Enumerated(EnumType.STRING)
+    private ReceptionStatus status;
 
 }

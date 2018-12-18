@@ -1,5 +1,6 @@
 package com.mvp.springboot.hospital.service;
 
+import com.mvp.springboot.hospital.entities.ReceptionStatus;
 import com.mvp.springboot.hospital.entities.Result;
 import com.mvp.springboot.hospital.repositories.ResultRepository;
 import com.mvp.springboot.hospital.service.converter.ResultConverter;
@@ -23,6 +24,7 @@ public class ResultService {
     }
 
     public Result create(Result result){
+        result.getReception().setStatus(ReceptionStatus.HAS_RESULT);
         return resultRepository.save(result);
     }
 

@@ -3,6 +3,7 @@ package com.mvp.springboot.hospital.config;
 import com.mvp.springboot.hospital.entities.Doctor;
 import com.mvp.springboot.hospital.entities.Patient;
 import com.mvp.springboot.hospital.entities.Reception;
+import com.mvp.springboot.hospital.entities.ReceptionStatus;
 import com.mvp.springboot.hospital.repositories.DoctorRepository;
 import com.mvp.springboot.hospital.repositories.PatientRepository;
 import com.mvp.springboot.hospital.repositories.ReceptionRepository;
@@ -51,6 +52,7 @@ public class DataLoader {
             .patient(patient1)
             .year(2018)
             .month(12)
+            .status(ReceptionStatus.NO_RESULT)
             .day(18)
             .hour(15)
             .build();
@@ -60,6 +62,7 @@ public class DataLoader {
             .patient(patient1)
             .year(2018)
             .month(12)
+            .status(ReceptionStatus.NO_RESULT)
             .day(18)
             .hour(10)
             .build();

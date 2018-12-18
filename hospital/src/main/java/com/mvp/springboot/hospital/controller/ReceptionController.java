@@ -1,6 +1,7 @@
 package com.mvp.springboot.hospital.controller;
 
 import com.mvp.springboot.hospital.entities.Reception;
+import com.mvp.springboot.hospital.entities.ReceptionStatus;
 import com.mvp.springboot.hospital.service.ReceptionService;
 import com.mvp.springboot.hospital.service.converter.ReceptionConverter;
 import com.mvp.springboot.hospital.service.dto.ReceptionDto;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,8 +30,8 @@ public class ReceptionController {
     private ReceptionConverter receptionConverter;
 
     @GetMapping
-    public List<ReceptionDto> getReceptions(){
-        List<Reception> receptions = receptionService.findAll();
+    public List<ReceptionDto> getReceptions(@RequestParam(value = "status", required = false)ReceptionStatus status){
+        List<Reception> receptions = receptionService.findAll(status);
         return receptionConverter.toDto(receptions);
     }
 
