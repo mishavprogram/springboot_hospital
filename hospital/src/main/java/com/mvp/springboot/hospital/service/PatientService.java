@@ -23,6 +23,7 @@ public class PatientService {
     }
 
     public Patient create(Patient patient){
+        System.out.println(patient.toString());
         return patientRepository.save(patient);
     }
 
