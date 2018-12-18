@@ -1,4 +1,6 @@
 var baseURL = "http://localhost:8081/api/receptions";
+var doctorsURL = "http://localhost:8081/api/doctors";
+var patientsURL = "http://localhost:8081/api/patients";
 
 window.onload = function() {
 	var title2 = document.getElementById('title2');
@@ -58,8 +60,66 @@ function displayReseptions(reseptions) {
     });
 }
 
-function fillReseption(event) {
+
+async function fillReseption(event) {
 	var time = event.target.parentNode.lastElementChild.innerHTML;
-	sessionStorage.setItem("timeForReseption", time);
-	document.location.href = "creationOfReseption.html";
+	var doctor;
+    var patient;
+    var date = new Date();
+    var reseption = {}
+
+    await fetch(doctorsURL)
+    .then(d => d.json())
+    // .then(d => d.slice(1))
+    .then(d => filterPeopleById(d, sessionStorage.getItem("docID")))
+    .then(d => doctor = d)
+    .catch(err => alert(err));
+
+    // console.log(doctor)
+
+    await fetch(patientsURL)
+    .then(d => d.json())
+    .then(d => filterPeopleById(d, sessionStorage.getItem("patID")))
+    .then(d => patient = d)
+    .catch(err => alert(err));
+
+    // console.log(patient)
+    var hours = event.target.parentNode.lastElementChild.innerHTML;
+    var trueHours = "";
+    var i = 0;
+    while (hours[i] != ":") {
+        trueHours += hours[i];
+        i++;
+    }
+
+    date.setHours(+trueHours);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    // console.log(date);
+
+    reseption.doctor = doctor;
+    reseption.patient = patient;
+    reseption.localDate = date.toISOString();
+    console.log(reseption);
+
+    fetch(baseURL, {
+                method: 'POST',
+                headers: {  
+                    'Accept': 'application/json',
+                  "Content-type": "application/json"  
+                },
+                body: JSON.stringify(reseption)
+            })
+            .then(() => alert('Success!'))
+            .catch(() => alert('Failed!'));
+            //document.location.href = "patients.html";
+}
+
+function filterPeopleById(arr, id) {
+    //console.log(sessionStorage);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id == id) {
+            return arr[i];
+        }
+    }
 }
