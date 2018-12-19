@@ -7,6 +7,11 @@ window.onload = function() {
 
 	var enteredName = document.getElementById("enteredPatientName");
 	var addBtn = document.getElementById("addPatButton");
+  var fillResBtn = document.getElementById("fillRes");
+
+  fillResBtn.addEventListener("click", function() {
+    document.location.href = "withoutResults.html";
+  })
 
 	addBtn.addEventListener("click", function(event){
 		if (enteredName.value.length != 0) {

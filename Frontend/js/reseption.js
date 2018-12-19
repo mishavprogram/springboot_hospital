@@ -11,7 +11,6 @@ window.onload = function() {
 
     returnBtn = document.getElementById("returnBtn");
     returnBtn.addEventListener("click", function() {
-    console.log("kek")
     document.location.href = "patients.html";
     })
 
