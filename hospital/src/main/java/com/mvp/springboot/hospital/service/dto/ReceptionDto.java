@@ -21,9 +21,9 @@ public class ReceptionDto {
 
     private Long id;
 
-    private Doctor doctor;
+    private DoctorDto doctor;
 
-    private Patient patient;
+    private PatientDto patient;
 
     private LocalDateTime localDate;
 

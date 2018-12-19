@@ -3,6 +3,7 @@ package com.mvp.springboot.hospital.service.converter;
 import com.mvp.springboot.hospital.entities.Reception;
 import com.mvp.springboot.hospital.service.dto.ReceptionDto;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,12 @@ import java.time.LocalDateTime;
 @Component
 @AllArgsConstructor
 public class ReceptionConverter implements Converter<ReceptionDto, Reception> {
+
+    @Autowired
+    private DoctorConverter doctorConverter;
+
+    @Autowired
+    private PatientConverter patientConverter;
 
     @Override
     public Reception toEntity(ReceptionDto dto) {
@@ -19,8 +26,8 @@ public class ReceptionConverter implements Converter<ReceptionDto, Reception> {
 
         return Reception.builder()
             .id(dto.getId())
-            .doctor(dto.getDoctor())
-            .patient(dto.getPatient())
+            .doctor(doctorConverter.toEntity(dto.getDoctor()))
+            .patient(patientConverter.toEntity(dto.getPatient()))
             .year(dto.getLocalDate().getYear())
             .month(dto.getLocalDate().getMonth().getValue())
             .day(dto.getLocalDate().getDayOfMonth())
@@ -42,8 +49,8 @@ public class ReceptionConverter implements Converter<ReceptionDto, Reception> {
 
         return ReceptionDto.builder()
             .id(entity.getId())
-            .doctor(entity.getDoctor())
-            .patient(entity.getPatient())
+            .doctor(doctorConverter.toDto(entity.getDoctor()))
+            .patient(patientConverter.toDto(entity.getPatient()))
             .localDate(localDateTime)
             .build();
     }

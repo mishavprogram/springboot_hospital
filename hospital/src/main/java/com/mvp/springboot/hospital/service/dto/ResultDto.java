@@ -1,6 +1,5 @@
 package com.mvp.springboot.hospital.service.dto;
 
-import com.mvp.springboot.hospital.entities.Reception;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +15,7 @@ public class ResultDto {
 
     private Long id;
 
-    private Reception reception;
+    private ReceptionDto reception;
 
     private String info;
 
