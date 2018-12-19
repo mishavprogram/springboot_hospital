@@ -29,7 +29,7 @@ async function fillResult(event){
 
 		//console.log(result);
 
-		fetch(baseUrl, {
+		await fetch(baseUrl, {
 	        	method: 'POST',
 	        	headers: {  
 	        		'Accept': 'application/json',
@@ -39,6 +39,7 @@ async function fillResult(event){
       		})
     		.then(() => alert('Success!'))
     		.catch(() => alert('Failed!'));
+    		document.location.href = "patients.html";	
 	} else {
 		alert("Please, enter diagnosis");
 	}

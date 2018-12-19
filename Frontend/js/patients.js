@@ -18,12 +18,12 @@ window.onload = function() {
     document.location.href = "withoutResults.html";
   })
 
-	addBtn.addEventListener("click", function(event){
+	addBtn.addEventListener("click", async function(event){
 		if (enteredName.value.length != 0) {
 			var patient = {};
 			patient.name = enteredName.value;
 			console.log(JSON.stringify(patient));
-			fetch(baseURL, {
+			await fetch(baseURL, {
 	        	method: 'POST',
 	        	headers: {  
 	        		'Accept': 'application/json',
@@ -33,7 +33,7 @@ window.onload = function() {
       		})
     		.then(() => alert('Success!'))
     		.catch(() => alert('Failed!'));
-    		//document.location.href = "patients.html";
+    		document.location.href = "patients.html";
 		} else {
 			alert("Please, enter patient name");
 		}
