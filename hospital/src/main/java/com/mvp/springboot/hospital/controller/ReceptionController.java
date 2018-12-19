@@ -6,6 +6,7 @@ import com.mvp.springboot.hospital.service.ReceptionService;
 import com.mvp.springboot.hospital.service.converter.ReceptionConverter;
 import com.mvp.springboot.hospital.service.dto.ReceptionDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -43,10 +45,11 @@ public class ReceptionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReceptionDto> getForm(@PathVariable
+    @ResponseStatus(HttpStatus.OK)
+    public ReceptionDto getForm(@PathVariable
                                                  long id) {
         ReceptionDto receptionDto = receptionService.findById(id);
-        return ResponseEntity.ok(receptionDto);
+        return receptionDto;
     }
 
 }
