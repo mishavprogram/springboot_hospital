@@ -1,7 +1,9 @@
 package com.mvp.springboot.hospital.service;
 
+import com.mvp.springboot.hospital.entities.Reception;
 import com.mvp.springboot.hospital.entities.ReceptionStatus;
 import com.mvp.springboot.hospital.entities.Result;
+import com.mvp.springboot.hospital.repositories.ReceptionRepository;
 import com.mvp.springboot.hospital.repositories.ResultRepository;
 import com.mvp.springboot.hospital.service.converter.ResultConverter;
 import com.mvp.springboot.hospital.service.dto.ResultDto;
@@ -17,6 +19,9 @@ public class ResultService {
     private ResultRepository resultRepository;
 
     @Autowired
+    private ReceptionRepository receptionRepository;
+
+    @Autowired
     private ResultConverter resultConverter;
 
     public List<Result> findAll(){
@@ -24,7 +29,9 @@ public class ResultService {
     }
 
     public Result create(Result result){
-        result.getReception().setStatus(ReceptionStatus.HAS_RESULT);
+        Reception reception = result.getReception();
+        reception.setStatus(ReceptionStatus.HAS_RESULT);
+        receptionRepository.save(reception);
         return resultRepository.save(result);
     }
 
