@@ -15,7 +15,6 @@ window.onload = function() {
 function displayReseptions(reseptions) {
 	var withoutResultTable = document.getElementById('withoutResultTable');
     console.log(reseptions);
-    var startTime = 9;
     
     reseptions.forEach(function(res){
         var tr = document.createElement("tr");

@@ -8,6 +8,11 @@ window.onload = function() {
 	var enteredName = document.getElementById("enteredPatientName");
 	var addBtn = document.getElementById("addPatButton");
   var fillResBtn = document.getElementById("fillRes");
+  var showResultsBtn = document.getElementById("showRes");
+
+  showResultsBtn.addEventListener("click", function() {
+    document.location.href = "results.html";
+  })
 
   fillResBtn.addEventListener("click", function() {
     document.location.href = "withoutResults.html";

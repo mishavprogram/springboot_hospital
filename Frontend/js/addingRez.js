@@ -1,4 +1,5 @@
-var reseptionURL = "http://localhost:8081/api/reseptions";
+var reseptionURL = "http://localhost:8081/api/receptions";
+var baseUrl = "http://localhost:8081/api/results";
 var returnBtn;
 var addRezBtn;
 var enteredDiagnosis;
@@ -21,14 +22,23 @@ async function fillResult(event){
 		var result = {};
 		result.info = enteredDiagnosis.value;
 
-		console.log(reseptionId);
-
 		await fetch(reseptionURL + `/${reseptionId}`)
 		.then(d => d.json())
-		.then(d => result.reseption = d)
+		.then(d => result.reception = d)
 		.catch(() => alert('Failed!'));
 
-		console.log(result);
+		//console.log(result);
+
+		fetch(baseUrl, {
+	        	method: 'POST',
+	        	headers: {  
+	        		'Accept': 'application/json',
+			      "Content-type": "application/json"  
+			    },
+	        	body: JSON.stringify(result)
+      		})
+    		.then(() => alert('Success!'))
+    		.catch(() => alert('Failed!'));
 	} else {
 		alert("Please, enter diagnosis");
 	}

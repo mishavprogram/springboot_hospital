@@ -28,7 +28,7 @@
 .pats {
 	display: flex;
 	justify-content: space-between;
-	width: 900px;
+	width: 1200px;
 }
 
 .addPat {
@@ -42,7 +42,7 @@
 	margin-bottom: 50px;
 }
 
-.fillRes {
+.fillRes, .showRes {
 	margin-top: 50px;
 	margin-left: 50px;
 }
