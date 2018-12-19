@@ -28,13 +28,21 @@
 .pats {
 	display: flex;
 	justify-content: space-between;
-	width: 700px;
+	width: 900px;
 }
 
 .addPat {
 	margin-top: 50px;
+	margin-left: 50px;
 }
 
 .returnBtn {
 	background-color: orange;
+	margin-left: 50px;
+	margin-bottom: 50px;
+}
+
+.fillRes {
+	margin-top: 50px;
+	margin-left: 50px;
 }
