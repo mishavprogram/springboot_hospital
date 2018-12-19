@@ -46,6 +46,7 @@ public class ReceptionController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin
     public ReceptionDto getForm(@PathVariable
                                                  long id) {
         ReceptionDto receptionDto = receptionService.findById(id);
