@@ -1,16 +1,29 @@
+body {
+	/*background-color: black;*/
+	background-image: url("../img/hospital.jpg");
+	background-size: cover;
+	color: #2B3DCA;
+}
+
 .customTable {
 	text-align: center;
 	font-size: 24px;
+	color: white;
+	border-radius: 30px;
+	border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .customTable th {
-	background-color: green;
-	padding: 20px;
+	background-color: #041285;
+	padding: 10px;
 }
 
 .customTable td {
-	background-color: lightgreen;
-	padding: 20px;
+	background-color: #2B3DCA;
+	padding: 5px 50px;
 }
 
 .customTable tr:hover {
@@ -22,27 +35,57 @@
 }
 
 .busy td {
-	background-color: crimson;
+	background-color: #D01F72;
 }
 
 .pats {
 	display: flex;
-	justify-content: space-between;
-	width: 1200px;
+	justify-content: space-around;
+	width: 600px;
+	margin: 0 auto;
 }
 
-.addPat {
-	margin-top: 50px;
-	margin-left: 50px;
+.patOptions {
+	margin: 30px auto;
+	display: flex;
+	justify-content: space-around;
+	width: 800px;
 }
 
 .returnBtn {
-	background-color: orange;
-	margin-left: 50px;
+	background-color: #2B3DCA;
 	margin-bottom: 50px;
+	border-radius: 30px;
+	padding: 8px;
+	color: white;
+	margin: 20px auto;
+	display: block;
+}
+
+.optionBtn {
+	background-color: #2B3DCA;
+	margin-bottom: 50px;
+	border-radius: 30px;
+	padding: 8px;
+	color: white;
 }
 
 .fillRes, .showRes {
 	margin-top: 50px;
 	margin-left: 50px;
+}
+
+input {
+	border-radius: 30px;
+	padding: 5px;
+}
+
+h1, h2, h3 {
+	text-align: center;
+}
+
+.addingDiagnosis {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
 }
